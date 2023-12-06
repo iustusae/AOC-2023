@@ -2,7 +2,6 @@
 #include <cctype>
 #include <fstream>
 #include <functional>
-#include <ios>
 #include <iostream>
 #include <map>
 #include <numeric>
@@ -17,14 +16,8 @@
  */
 struct Game
 {
-  struct Triad
-  {
-    int r, g, b;
-  };
-
   int id {};
   bool is_valid = true;
-  Triad cube_cts = {};
 };
 
 /**
