@@ -14,28 +14,15 @@ include(cmake/project-is-top-level.cmake)
 include(cmake/variables.cmake)
 
 # ---- Declare library ----
-add_library(
-  ttt_lib OBJECT
-  source/lib.cpp
-  source/day_1/day1.hpp
-)
-
-target_include_directories(
-  ttt_lib ${warning_guard}
-  PUBLIC
-  "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/source>"
-)
-
-target_compile_features(ttt_lib PUBLIC cxx_std_20)
 
 # ---- Declare executable ----
-add_executable(ttt_exe source/main.cpp)
+file(GLOB AOC CONFIGURE_DEPENDS ${PROJECT_SOURCE_DIR}/source/day_*/*.cpp)
+add_executable(ttt_exe ${AOC})
 add_executable(ttt::exe ALIAS ttt_exe)
 
 set_property(TARGET ttt_exe PROPERTY OUTPUT_NAME ttt)
-target_compile_features(ttt_exe PRIVATE cxx_std_20)
+target_compile_features(ttt_exe PRIVATE cxx_std_23)
 target_compile_options(ttt_exe PRIVATE -Wall -Wextra -Wpedantic -ggdb)
-target_link_libraries(ttt_exe PRIVATE ttt_lib)
 target_include_directories(ttt_exe PRIVATE ${PROJECT_SOURCE_DIR}/source/day_1/)
 
 # ---- Install rules ----

@@ -123,6 +123,7 @@ auto find_symbols_2(const std::string &line, int pos) -> void {
   }
 }
 
+
 auto adjacents_2() -> void {
   for (auto &coord : symbs) {
     for (auto &num : nums) {
@@ -199,5 +200,7 @@ void p() {
 auto main() -> int {
   solve_2();
   // p();
+  //
+
   return 0;
 }
